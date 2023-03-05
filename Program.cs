@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +12,41 @@ namespace vernyomasnaplo
         static void Main(string[] args)
         {
             #region Zádor Tamás része
-            Console.Title = "Vérnyomásnapló";
-
+            ConsoleKeyInfo key;
+            do
+            {
+            Console.Title = "Vérnyomásnapló projektmunka";
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine();
+            Console.WriteLine("\t\t\tA projektmunkát készítette: | Zádor Tamás | Fehér Tamás | Bolgár Milán |");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("A kezdéshez nyomj Entert");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("A kilépéshez nyomj X-et");
+            key = Console.ReadKey();
+            if (key.Key == ConsoleKey.X)
+            {
+                return;
+            }
+
+            } while (key.Key != ConsoleKey.Enter);
+            Console.Clear();
+
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(@"                                |________|___________________|_
-                                |        | | | | | | | | | | | |________________
-                                |________|___________________|_|                ,
-                                |        |                   |                  ,");
+            Console.WriteLine("\t\t\t\t\t\tVérnyomásnapló projektmunka");
+            Console.WriteLine();
+            Console.WriteLine(@"                                        |________|___________________|_
+                                        |        | | | | | | | | | | | |________________
+                                        |________|___________________|_|                ,
+                                        |        |                   |                  ,");
             Console.WriteLine();
 
             //Input mezők megvalósítása
@@ -43,19 +70,19 @@ namespace vernyomasnaplo
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Kérem adja meg a szisztolés vérnyomás értékét");
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             int szisztoles = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Kérem adja meg a diasztolés vérnyomás értékét");
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             int diasztoles = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Kérem adja meg a pulzusszám értékét:");
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             int pulzusszam = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
@@ -74,7 +101,7 @@ namespace vernyomasnaplo
             StreamWriter kiiratas = new StreamWriter(fajl);
             kiiratas.WriteLine("MEGADOTT ADATOK:");
             kiiratas.WriteLine();
-            kiiratas.WriteLine("Név: {0} | Dátum: {1} | Napszak: {2} | Szisztolés: {3} | Diasztolés: {4} | Pulzusszám: {5}", nev, datum, napszak, szisztoles, diasztoles, pulzusszam);
+            kiiratas.WriteLine("| Név: {0} | Dátum: {1} | Napszak: {2} | Szisztolés: {3} | Diasztolés: {4} | Pulzusszám: {5} |", nev, datum, napszak, szisztoles, diasztoles, pulzusszam);
             kiiratas.Close();
             #endregion
 
