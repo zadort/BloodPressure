@@ -12,9 +12,6 @@ namespace vernyomasnaplo
         static void Main(string[] args)
         {
             #region Zádor Tamás része
-            ConsoleKeyInfo key;
-            do
-            {
             Console.Title = "Vérnyomásnapló projektmunka";
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.Clear();
@@ -28,19 +25,13 @@ namespace vernyomasnaplo
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("A kilépéshez nyomj X-et");
-            key = Console.ReadKey();
-            if (key.Key == ConsoleKey.X)
-            {
-                return;
-            }
-
-            } while (key.Key != ConsoleKey.Enter);
+            Console.ReadLine();
             Console.Clear();
-
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine();
             Console.WriteLine("\t\t\t\t\t\tVérnyomásnapló projektmunka");
             Console.WriteLine();
             Console.WriteLine(@"                                        |________|___________________|_
@@ -89,12 +80,15 @@ namespace vernyomasnaplo
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Adatok ELMENTVE!");
             Console.ResetColor();
+            Console.WriteLine();
 
             //Listák létrehozása
             List<int> vAdatok = new List<int>();
             vAdatok.Add(szisztoles);
-            vAdatok.Add(diasztoles);
-            vAdatok.Add(pulzusszam);
+            List<int> vAdatok2 = new List<int>();
+            vAdatok2.Add(diasztoles);
+            List<int> vAdatok3 = new List<int>();
+            vAdatok3.Add(pulzusszam);
 
             //Kiíratás a fájlba
             FileStream fajl = new FileStream("Összesítés.txt", FileMode.Create);
@@ -109,7 +103,19 @@ namespace vernyomasnaplo
             #region Fehér Tamás része
 
             #endregion
-
+            int osszeg2 = 0;
+            int osszeg3 = 0;
+            int osszeg = 0;
+            for (int i = 0; i < vAdatok.Count; i++)
+            {
+                osszeg += vAdatok[i];
+                osszeg2 += vAdatok2[i];
+                osszeg3 += vAdatok3[i];
+            }
+            int atlag = osszeg / vAdatok.Count;
+            int atlag2 = osszeg2 / vAdatok.Count;
+            int atlag3 = osszeg3 / vAdatok.Count;
+            Console.WriteLine("Átlag vérnyomás:\t{0}\t{1}\t{2}", atlag, atlag2, atlag3);
 
             #region Bolgár Milán része
 
